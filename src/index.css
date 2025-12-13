@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+/* text color */
+/* .text-primaryBlue {
+  color: #2563eb;
+}
+.text-softGold {
+  color: #facc15;
+}
+.text-darkNavy {
+  color: #1e3a8a;
+   color: #202e54; 
+} */
+
+/* bg-color */
+.bg-primaryBlue {
+  color: #2563eb;
+}
+.bg-softGold {
+  color: #facc15;
+}
+.bg-navy {
+  color: #1e3a8a;
+}
+
+.bg-dark {
+  color: #364a82;
+}
+
+.bg-hover {
+  color: #2b3b67;
+}
