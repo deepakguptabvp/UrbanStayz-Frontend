@@ -28,10 +28,10 @@ const HeroSection = ({ onSearch }) => {
     "Non AC",
     "Attached Bathroom",
     "Private Room",
-    "Fully Furnished",
-    "Semi Furnished",
     "Wifi",
     "Gym",
+    "Fully Furnished",
+    "Semi Furnished",
     "Power Backup",
     "Included Food",
     "Common Kitchen",
@@ -62,7 +62,7 @@ const HeroSection = ({ onSearch }) => {
                 <MapPinIcon className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 flex-shrink-0" />
                 <input
                   type="text"
-                  placeholder="Enter location"
+                  placeholder="Enter search city"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   className="ml-2 grow focus:outline-none bg-transparent text-gray-700 text-sm sm:text-base"
