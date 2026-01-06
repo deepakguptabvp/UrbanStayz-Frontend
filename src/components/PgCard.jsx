@@ -137,13 +137,13 @@ const PgCard = ({
         {/* Price & CTA - LOCKED TO BOTTOM */}
         <div className="mt-auto pt-5 sm:pt-4 md:pt-5 flex justify-between items-center gap-2">
           <div>
-            <span className="text-lg sm:text-lg text-[#364a82] font-bold">
+            <span className="text-xl text-[#364a82] font-bold">
               ₹{price}
             </span>
             <span className="text-sm sm:text-sm text-gray-500"> /month</span>
           </div>
 
-          <button className="bg-[#364a82] hover:bg-[#d28c14] text-white py-1 sm:py-1.5 px-3 sm:px-4 rounded text-sm sm:text-sm transition cursor-pointer flex-shrink-0">
+          <button className="bg-[#364a82] hover:bg-[#d28c14] text-white py-1 sm:py-1.5 px-3 sm:px-4 rounded text-base sm:text-base transition cursor-pointer flex-shrink-0">
             View Details
           </button>
         </div>
