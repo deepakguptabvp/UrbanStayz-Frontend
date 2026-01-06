@@ -8,10 +8,12 @@ const AllListings = () => {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto p-4 lg:px-8 ">
-      <div className="md:py-12 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-6 sm:py-8 md:py-12">
+      <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {pgData.length === 0 ? (
-          <p>No Accomodation found for this location.</p>
+          <p className="text-base text-gray-600">
+            No Accomodation found for this location.
+          </p>
         ) : (
           pgData.map((pg) => <PgCard key={pg.id} {...pg} />)
         )}

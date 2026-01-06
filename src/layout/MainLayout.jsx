@@ -5,17 +5,18 @@ import { Toaster } from "react-hot-toast";
 
 const MainLayout = () => {
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    // make same for mobile view.(375px)
+    <div className="flex min-h-screen bg-gray-100 w-full">
       {/* Sidebar */}
       {/* <aside className="w-64 bg-white shadow-md hidden md:block">
         <Sidebar />
       </aside> */}
 
       {/* Main Content */}
-      <div>
+      <div className="w-full flex flex-col">
         <Header />
         {/* Child routes will be rendered here */}
-        <main>
+        <main className="flex-1">
           <Toaster position="top-center" reverseOrder={false} />
           <Outlet />
         </main>

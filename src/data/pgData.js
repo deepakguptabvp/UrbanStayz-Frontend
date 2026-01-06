@@ -7,8 +7,17 @@ const pgData = [
     rating: 4.5,
     imageUrl:
       "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=400&q=70",
-    type: "Female",
-    amenities: ["Wifi", "Furnished", "AC", "Attached Bathroom"],
+    type: "Female Only",
+    amenities: [
+      "Wifi",
+      "Gym",
+      "AC Rooms",
+      "Attached Bathroom",
+      "Fully Furnished",
+      "Prime Location",
+      "Near IT Park",
+    
+    ],
   },
   {
     id: "2",
@@ -18,8 +27,16 @@ const pgData = [
     rating: 4.2,
     imageUrl:
       "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=400&q=70",
-    type: "Male",
-    amenities: ["Wifi", "Food Included", "AC", "Power Backup", "Television"],
+    type: "Male Only",
+    amenities: [
+      "Wifi",
+      "Included Food",
+      "AC Rooms",
+      "Power Backup",
+      "Gym",
+      "Near IT Park",
+     
+    ],
   },
   {
     id: "3",
@@ -29,8 +46,16 @@ const pgData = [
     rating: 4.7,
     imageUrl:
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=400&q=70",
-    type: "Co-ed",
-    amenities: ["AC", "Furnished", "Gym", "Power Backup", "Parking"],
+    type: "Co-living",
+    amenities: [
+      "AC Rooms",
+      "Fully Furnished",
+      "Power Backup",
+      "Parking",
+      "Gym",
+      "Prime Location",
+      "Near Metro",
+    ],
   },
   {
     id: "4",
@@ -40,8 +65,15 @@ const pgData = [
     rating: 4.0,
     imageUrl:
       "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=70",
-    type: "Female",
-    amenities: ["Laundry", "Wifi", "Food Included", "Private Room", "Furnished"],
+    type: "Female Only",
+    amenities: [
+      "Laundry",
+      "Wifi",
+      "Gym",
+      "Included Food",
+      "Private Room",
+      "Fully Furnished",
+    ],
   },
   {
     id: "5",
@@ -49,9 +81,17 @@ const pgData = [
     location: "Mayur Vihar, Delhi",
     price: 8500,
     rating: 3.9,
-    imageUrl: "https://www.thebluekite.com/_next/image?url=https%3A%2F%2Fwww.thebluekite.com%2Fuploads%2Fproperty%2FH600-395-CONF-40-livingroom5.webp&w=3840&q=75",
-    type: "Male",
-    amenities: ["Laundry", "Wifi", "Food Included", "AC", "Furnished"],
+    imageUrl:
+      "https://www.thebluekite.com/_next/image?url=https%3A%2F%2Fwww.thebluekite.com%2Fuploads%2Fproperty%2FH600-395-CONF-40-livingroom5.webp&w=3840&q=75",
+    type: "Male Only",
+    amenities: [
+      "Laundry",
+      "Wifi",
+      "Included Food",
+      "AC Rooms",
+      "Fully Furnished",
+      "Public Transport Nearby",
+    ],
   },
   {
     id: "6",
@@ -61,8 +101,14 @@ const pgData = [
     rating: 4.3,
     imageUrl:
       "https://files.yappe.in/place/small/orion-hostels-best-pg-in-north-campus-delhi-university-4656209.webp",
-    type: "Female",
-    amenities: ["Laundry", "Wifi", "Food Included", "Non AC"],
+    type: "Female Only",
+    amenities: [
+      "Laundry",
+      "Wifi",
+      "Included Food",
+      "Non AC",
+      "Public Transport Nearby",
+    ],
   },
   {
     id: "7",
@@ -72,8 +118,13 @@ const pgData = [
     rating: 4.4,
     imageUrl:
       "https://asset-cdn.stanzaliving.com/stanza-living/image/upload/f_auto,q_70,w_400/e_improve/e_sharpen:10/e_saturation:10/v1580289732/Website/CMS-Uploads/j8hjb1qhzcbnsmnude3m.jpg",
-    type: "Co-ed",
-    amenities: ["Furnished", "Attached Bathroom", "Power Backup", "Gym"],
+    type: "Co-living",
+    amenities: [
+      "Fully Furnished",
+      "Attached Bathroom",
+      "Power Backup",
+      "Parking",
+    ],
   },
   {
     id: "8",
@@ -83,8 +134,8 @@ const pgData = [
     rating: 4.1,
     imageUrl:
       "https://asset-cdn.stanzaliving.com/stanza-living/image/upload/f_auto,q_70,w_400/v1580375346/Website/CMS-Uploads/o4bf5h8z6cxtgnb6hvxj.jpg",
-    type: "Male",
-    amenities: ["Wifi", "AC", "Laundry", "Food Included"],
+    type: "Male Only",
+    amenities: ["Wifi", "AC Rooms", "Laundry", "Included Food", "Near IT Park"],
   },
   {
     id: "9",
@@ -94,8 +145,8 @@ const pgData = [
     rating: 4.0,
     imageUrl:
       "https://img.cofynd.com/images/original/938b5bac0b64a441513fd9038753a26059ff0fce.jpg?w=400&q=70",
-    type: "Co-ed",
-    amenities: ["Attached Bathroom", "Gym", "Power Backup"],
+    type: "Co-living",
+    amenities: ["Attached Bathroom", "Power Backup", "Parking", "Near Metro"],
   },
   {
     id: "10",
@@ -105,8 +156,8 @@ const pgData = [
     rating: 4.5,
     imageUrl:
       "https://img.cofynd.com/images/latest_images_2024/39257be6bf339917f449ee7d18bb9862b5750675.webp?w=400&q=70",
-    type: "Female",
-    amenities: ["Wifi", "AC", "Furnished", "Gym", "Laundry"],
+    type: "Female Only",
+    amenities: ["Wifi", "AC Rooms", "Fully Furnished", "Laundry", "Parking"],
   },
   {
     id: "11",
@@ -116,8 +167,8 @@ const pgData = [
     rating: 4.2,
     imageUrl:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQMeyZf_Ij4SmfdnUkYK9VSzZJJZ4yrvwabw&s",
-    type: "Male",
-    amenities: ["Food Included", "Power Backup", "Laundry"],
+    type: "Co-living",
+    amenities: ["Included Food", "Power Backup", "Laundry", "Near IT Park"],
   },
   {
     id: "12",
@@ -127,8 +178,13 @@ const pgData = [
     rating: 4.3,
     imageUrl:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnbeme0XT1ZRLqzfZ6qwVLiy65zHTM7rUQng&s",
-    type: "Female",
-    amenities: ["Wifi", "Furnished", "Attached Bathroom"],
+    type: "Female Only",
+    amenities: [
+      "Wifi",
+      "Fully Furnished",
+      "Attached Bathroom",
+      "Prime Location",
+    ],
   },
   {
     id: "13",
@@ -137,8 +193,8 @@ const pgData = [
     price: 15500,
     rating: 4.6,
     imageUrl: "https://cupliv.com/images/mumbai/tribe-ville-parle/1.jpg",
-    type: "Co-ed",
-    amenities: ["Laundry", "Gym", "Power Backup", "Wifi"],
+    type: "Co-living",
+    amenities: ["Laundry", "Power Backup", "Wifi", "Parking"],
   },
   {
     id: "14",
@@ -148,8 +204,13 @@ const pgData = [
     rating: 3.8,
     imageUrl:
       "https://websiteupload.s3.ap-south-1.amazonaws.com/media/2024/07/66115bc1d6be29.webp",
-    type: "Female",
-    amenities: ["Food Included", "Non AC", "Furnished"],
+    type: "Female Only",
+    amenities: [
+      "Included Food",
+      "Non AC",
+      "Fully Furnished",
+      "Public Transport Nearby",
+    ],
   },
   {
     id: "15",
@@ -159,8 +220,8 @@ const pgData = [
     rating: 4.1,
     imageUrl:
       "https://www.thehivehostels.com/uploads/hostel/1718886244_0d6ccbcba47025f91e06.png",
-    type: "Male",
-    amenities: ["AC", "Power Backup", "Laundry"],
+    type: "Male Only",
+    amenities: ["AC Rooms", "Power Backup", "Laundry", "Near IT Park"],
   },
 ];
 
