@@ -83,16 +83,18 @@ export const Testimonials = () => {
             </div>
           </div>
 
-          {/* Navigating button left and right */}
+          {/* Left Navigating */}
           <button
-            className="absolute left-40 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-10 transition-all duration-300 cursor-pointer"
+            className="absolute left-0 lg:left-10 xl:left-40 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-10 transition-all duration-300 cursor-pointer"
             onClick={goToPrevSlide}
             aria-label="Previous slider button"
           >
             <FaChevronLeft size={24} />
           </button>
+
+          {/* Right Navigation */}
           <button
-            className="absolute right-40 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-10 transition-all duration-300 cursor-pointer"
+            className="absolute right-0 lg:right-10 xl:right-40 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-10 transition-all duration-300 cursor-pointer"
             onClick={goToNextSlide}
             aria-label="Next slider button"
           >

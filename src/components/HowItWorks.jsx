@@ -15,13 +15,13 @@ const HowItWorks = () => {
         </div>
 
         {/* Search - Visit - Connect */}
-        <div className="relative md:mt-20 grid gap-18 grid-cols-1 md:grid-cols-3 items-center justify-center">
+        <div className="relative md:mt-20 grid lg:gap-18 grid-cols-1 md:grid-cols-3 items-center justify-center">
           {/* Connecting Line */}
           <div className="absolute top-8 left-1/2 -translate-x-1/2 w-2/3 h-[2px] bg-blue-900 hidden md:block" />
 
           {howItWorksData.map((item) => (
-            <div key={item.step} className="relative text-center space-y-3">
-              <h3 className="-mt-10 text-[16px] font-medium text-gray-900">
+            <div key={item.step} className="relative text-center space-y-3 mt-2 mb-6">
+              <h3 className="md:-mt-10 text-[16px] font-medium text-gray-900">
                 {item.step}
               </h3>
 
