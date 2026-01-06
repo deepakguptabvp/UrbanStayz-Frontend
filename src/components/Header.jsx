@@ -12,23 +12,33 @@ const Header = () => {
   return (
     <nav className="shadow-md sticky top-0 z-10 bg-white md:h-20 lg:h-20 h-13 p-1.5 flex items-center border-b-2 border-blue-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex justify-between items-center my-auto">
+        <div className="flex justify-between items-center my-auto w-full">
           {/* Logo Section */}
           <Link to="/" className="flex items-center">
             <img
-              src="/favicon.png"
+              src="/new-logo/mainLogo-2.svg"
               loading="lazy"
               alt="Company Logo"
-              className="h-10 w-8"
+              className="h-12 w-32 md:h-14 md:w-42"
             />
 
-            <span className="ml-3 md:text-2xl font-bold text-blue-950 ">
+            {/* <span className="ml-3 md:text-2xl font-bold text-blue-950 ">
               UrbanStayz
-            </span>
+            </span> */}
           </Link>
 
           {/* Toggle Button for Mobile */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <Link
+              to="/login"
+              onClick={() => isMenuOpen && toggleMobileMenu()}
+              className="bg-[#364a82] text-white px-4 py-2 rounded-md transition hover:bg-[#2b3b67] cursor-pointer"
+            >
+              <div className="flex justify-center items-center">
+                <UserIcon className="h-6 w-6 mr-2" />
+                <span>Sign In</span>
+              </div>
+            </Link>
             <button
               title="Explore"
               onClick={toggleMobileMenu}
@@ -97,7 +107,7 @@ const Header = () => {
           <Link
             to="/login"
             onClick={() => isMenuOpen && toggleMobileMenu()}
-            className="bg-[#364a82] text-white px-4 py-2  rounded-md transition hover:bg-[#2b3b67] cursor-pointer"
+            className="hidden md:flex bg-[#364a82] text-white px-4 py-2 rounded-md transition hover:bg-[#2b3b67] cursor-pointer"
           >
             <div className="flex justify-center items-center">
               <UserIcon className="h-6 w-6 mr-2" />

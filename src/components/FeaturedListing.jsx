@@ -18,7 +18,7 @@ const FeaturedListing = ({ listings = [] }) => {
             available right now.
           </p>
         </div>
-        <div className="mt-12 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mt-12 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-stretch">
           {featuredListings.length === 0 ? (
             <p>No Acoomodation found for this location.</p>
           ) : (
@@ -31,7 +31,7 @@ const FeaturedListing = ({ listings = [] }) => {
               navigate("/alllistings");
               window.scrollTo(0, 0);
             }}
-            className="bg-[#364a82]  hover:bg-orange-400 text-white py-2 px-6 rounded-md transition cursor-pointer"
+            className="bg-[#364a82]  hover:bg-[#16317b] hover:scale-110 text-white py-2 px-6 rounded-md transition cursor-pointer"
           >
             View All Listings
           </button>

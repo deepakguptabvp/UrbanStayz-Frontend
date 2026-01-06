@@ -49,7 +49,7 @@ const pgData = [
     location: "Mayur Vihar, Delhi",
     price: 8500,
     rating: 3.9,
-    imageUrl: "https://alexandro.in/image/delhi/covie-east-of-kailash-52/1.jpg",
+    imageUrl: "https://www.thebluekite.com/_next/image?url=https%3A%2F%2Fwww.thebluekite.com%2Fuploads%2Fproperty%2FH600-395-CONF-40-livingroom5.webp&w=3840&q=75",
     type: "Male",
     amenities: ["Laundry", "Wifi", "Food Included", "AC", "Furnished"],
   },

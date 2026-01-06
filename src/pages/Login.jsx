@@ -79,13 +79,13 @@ const Login = () => {
       {/* login div */}
       <div className="w-full md:w-2/5 flex flex-col items-center justify-center bg-white px-6">
         <img
-          src="/mainLogo.png"
+          src="/new-logo/mainLogo-2.svg"
           alt="login logo"
           className="h-15 w-full object-contain rounded-2xl mb-3"
         />
-        <h1 className="text-4xl md:text-3xl mb-2 font-bold text-center text-[#32363e]">
+        {/* <h1 className="text-4xl md:text-3xl mb-2 font-bold text-center text-blue-900">
           Welcome to UrbanStayz.com
-        </h1>
+        </h1> */}
         <span className="text-gray-500 text-md font-semibold">
           Discover stays that match your lifestyle.
         </span>
@@ -93,7 +93,7 @@ const Login = () => {
         {/* Otp login */}
         <div className="flex flex-col space-y-3 my-10">
           <div className="relative w-full max-w-sm">
-            <span className="absolute left-0 h-full bg-orange-400 text-white px-3 flex items-center rounded-l-full text-md">
+            <span className="absolute left-0 h-full bg-blue-900 text-white px-3 flex items-center rounded-l-full text-md">
               +91
             </span>
             <input
@@ -106,7 +106,7 @@ const Login = () => {
                 setPhoneNo(digitsOnly);
               }}
               placeholder="Enter mobile number"
-              className="pl-16 pr-4 py-2 w-full rounded-full border-2 border-orange-400 focus:outline-none focus:border-orange-500"
+              className="pl-16 pr-4 py-2 w-full rounded-full border-2 border-blue-900 focus:outline-none focus:border-blue-900"
             />
           </div>
 
@@ -119,11 +119,11 @@ const Login = () => {
                 onChange={(e) => {
                   setOtp(e.target.value);
                 }}
-                className="pl-5 pr-4 py-2 w-full rounded-full border-2 border-orange-400 focus:outline-none focus:border-orange-400"
+                className="pl-5 pr-4 py-2 w-full rounded-full border-2 border-blue-900 focus:outline-none focus:border-blue-900"
               />
 
               <button
-                className="hover:underline cursor-pointer"
+                className="hover:underline cursor-pointer hover:scale-110"
                 onClick={handleResendOtp}
               >
                 Resend OTP
@@ -133,7 +133,7 @@ const Login = () => {
                 type="button"
                 disabled={loading}
                 onClick={handleVerifyOtp}
-                className="py-2 mt-3 rounded-full text-white font-serif bg-orange-400 hover:bg-orange-500 cursor-pointer"
+                className="py-2 mt-3 rounded-full text-white font-serif bg-blue-900 hover:bg-blue-950 cursor-pointer"
               >
                 {loading ? "Verifying OTP ..." : "Verify OTP"}
               </button>
@@ -144,7 +144,7 @@ const Login = () => {
                 type="button"
                 disabled={loading}
                 onClick={handleOtpSent}
-                className="py-2 mt-3 rounded-full text-white font-serif bg-orange-400 hover:bg-orange-500  cursor-pointer"
+                className="py-2 mt-3 rounded-full text-white font-serif bg-blue-900 hover:bg-blue-950  cursor-pointer"
               >
                 {loading ? "Sending ..." : "Request OTP"}
               </button>
@@ -153,7 +153,7 @@ const Login = () => {
               <div>
                 Don't have an account.{" "}
                 <Link to="/signup">
-                  <strong className="text-orange-500 cursor-pointer hover:underline">
+                  <strong className="text-[#d28c14] cursor-pointer hover:underline">
                     Create an account
                   </strong>
                 </Link>

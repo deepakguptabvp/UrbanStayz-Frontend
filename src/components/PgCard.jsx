@@ -30,7 +30,6 @@ const PgCard = ({
   type,
   amenities,
 }) => {
-  
   const amenityIcons = {
     Wifi: WifiIcon,
     "Attached Bathroom": ShowerHeadIcon,
@@ -56,23 +55,30 @@ const PgCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
+      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
     >
-      {/* Image and Type  */}
-      <div className="relative h-48">
-        <img src={imageUrl} alt={name} className="w-full object-cover h-full" />
+      {/* Image */}
+      <div className="relative h-48 shrink-0">
+        <img
+          src={imageUrl}
+          alt={name}
+          className="w-full h-full object-cover"
+        />
         <div className="absolute top-3 left-3 bg-[#364a82] text-white px-2 py-1 text-xs rounded">
           {type}
         </div>
       </div>
 
-      <div className="p-5">
-        {/* Name and rating */}
+      {/* Content */}
+      <div className="p-5 flex flex-col flex-1">
+        {/* Name & Rating */}
         <div className="flex justify-between items-start">
-          <h3 className="text-lg font-semibold  text-gray-800">{name}</h3>
+          <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
           <div className="flex items-center bg-green-50 px-2 py-1 rounded">
             <StarIcon className="h-4 w-4 text-yellow-500 mr-1" />
-            <span className="text-sm font-medium text-gray-700"> {rating}</span>
+            <span className="text-sm font-medium text-gray-700">
+              {rating}
+            </span>
           </div>
         </div>
 
@@ -82,7 +88,7 @@ const PgCard = ({
           <span className="text-sm">{location}</span>
         </div>
 
-        {/* Amenities  with framer motion works on refresh page*/}
+        {/* Amenities */}
         <div className="mt-4 flex flex-wrap gap-2">
           {amenities.map((amenity, index) => {
             const Icon = amenityIcons[amenity];
@@ -94,20 +100,23 @@ const PgCard = ({
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 className="bg-gray-100 text-gray-700 text-xs py-1 px-2 rounded-full flex items-center gap-1"
               >
-                {Icon && <Icon className="inline h-3 w-3" />}
+                {Icon && <Icon className="h-3 w-3" />}
                 {amenity}
               </motion.span>
             );
           })}
         </div>
 
-        {/* Rent/month & view details */}
-        <div className="mt-5 flex justify-between items-center">
+        {/* Price & CTA - LOCKED TO BOTTOM */}
+        <div className="mt-auto pt-5 flex justify-between items-center">
           <div>
-            <span className="text-lg text-[#364a82] font-bold"> ₹{price}</span>
+            <span className="text-lg text-[#364a82] font-bold">
+              ₹{price}
+            </span>
             <span className="text-sm text-gray-500"> /month</span>
           </div>
-          <button className="bg-[#364a82]  hover:bg-orange-400 text-white py-1.5 px-4 rounded text-sm transition cursor-pointer">
+
+          <button className="bg-[#364a82] hover:bg-[#d28c14] text-white py-1.5 px-4 rounded text-sm transition cursor-pointer">
             View Details
           </button>
         </div>

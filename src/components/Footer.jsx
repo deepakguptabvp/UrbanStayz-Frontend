@@ -15,10 +15,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-20">
           <div>
             <div className="flex items-center">
-              <img src="/favicon.png" alt="Logo" className="h-10 w-8" />
-              <span className="ml-2 text-xl font-bold text-white">
+              <img src="/new-logo/mainLogo-2.svg" alt="Logo" className="h-14 w-42 rounded-lg"  />
+              {/* <span className="ml-2 text-xl font-bold text-white">
                 UrbanStays
-              </span>
+              </span> */}
             </div>
             <p className="mt-4 text-gray-300 text-sm">
               Find furnished PGs, 1-BHK & 2-BHK apartments tailored for your

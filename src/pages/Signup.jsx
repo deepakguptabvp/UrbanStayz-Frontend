@@ -59,7 +59,7 @@ const Signup = () => {
                 value={formData.fullName}
                 onChange={handleChange}
                 placeholder="Enter your full name"
-                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none focus:ring-indigo-700"
+                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none  "
               />
             </div>
             <div>
@@ -74,7 +74,7 @@ const Signup = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter your email"
-                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none focus:ring-indigo-700"
+                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none  "
               />
             </div>
             <div>
@@ -95,7 +95,7 @@ const Signup = () => {
                   handleChange;
                 }}
                 placeholder="Enter your number"
-                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none focus:ring-indigo-700"
+                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none  "
               />
             </div>
             <div>
@@ -110,12 +110,12 @@ const Signup = () => {
                 value={formData.city}
                 onChange={handleChange}
                 placeholder="Enter your city"
-                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none focus:ring-orange-700"
+                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none "
               />
             </div>
             <button
               type="submit"
-              className="py-2 mt-6 md:w-80 text-lg font-serif  rounded-full text-white bg-orange-400 hover:bg-orange-500 cursor-pointer"
+              className="py-2 mt-6 md:w-80 text-lg font-serif  rounded-full text-white bg-[#d28c14] hover:bg-[#946410] cursor-pointer"
             >
               Sign up
             </button>
@@ -126,7 +126,7 @@ const Signup = () => {
         <div className="-mt-2">
           Already a user.{" "}
           <Link to="/login">
-            <strong className="text-orange-500 cursor-pointer hover:underline">
+            <strong className="text-[#d28c14] cursor-pointer hover:underline">
               Login
             </strong>
           </Link>
