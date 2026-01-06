@@ -9,7 +9,7 @@ const pgData = [
       "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=400&q=70",
     type: "Female Only",
     amenities: [
-      "Wifi",
+      "Wifi", 
       "Gym",
       "AC Rooms",
       "Attached Bathroom",
