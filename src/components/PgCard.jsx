@@ -135,7 +135,7 @@ const PgCard = ({
         </div>
 
         {/* Price & CTA - LOCKED TO BOTTOM */}
-        <div className="mt-auto pt-3 sm:pt-4 md:pt-5 flex justify-between items-center gap-2">
+        <div className="mt-auto pt-5 sm:pt-4 md:pt-5 flex justify-between items-center gap-2">
           <div>
             <span className="text-lg sm:text-lg text-[#364a82] font-bold">
               ₹{price}

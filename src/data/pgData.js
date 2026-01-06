@@ -35,7 +35,8 @@ const pgData = [
       "Power Backup",
       "Gym",
       "Near IT Park",
-     
+      "CCTV Surveillance",
+      "Fully Furnished"
     ],
   },
   {
@@ -73,6 +74,8 @@ const pgData = [
       "Included Food",
       "Private Room",
       "Fully Furnished",
+      "Power Backup",
+      "CCTV Surveillance"
     ],
   },
   {
