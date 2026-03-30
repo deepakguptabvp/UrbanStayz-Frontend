@@ -48,7 +48,7 @@ const HeroSection = ({ onSearch }) => {
       </div>
       <div className="relative max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-20 lg:py-12">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center">
-          Find Your Ideal Fully Furnished PG Accommodation
+          Find Your Ideal "Fully Furnished PG" Accommodation
         </h1>
         <p className="mt-4 sm:mt-6 text-gray-300 text-sm sm:text-base text-center max-w-2xl mx-auto">
           Explore a curated selection of premium, cost-effective PG residences
