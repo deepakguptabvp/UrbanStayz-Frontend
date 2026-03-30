@@ -9,14 +9,13 @@ const pgData = [
       "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=400&q=70",
     type: "Female Only",
     amenities: [
-      "Wifi", 
+      "Wifi",
       "Gym",
       "AC Rooms",
       "Attached Bathroom",
       "Fully Furnished",
       "Prime Location",
       "Near IT Park",
-    
     ],
   },
   {
@@ -36,7 +35,7 @@ const pgData = [
       "Gym",
       "Near IT Park",
       "CCTV Surveillance",
-      "Fully Furnished"
+      "Fully Furnished",
     ],
   },
   {
@@ -75,7 +74,7 @@ const pgData = [
       "Private Room",
       "Fully Furnished",
       "Power Backup",
-      "CCTV Surveillance"
+      "CCTV Surveillance",
     ],
   },
   {
@@ -85,7 +84,7 @@ const pgData = [
     price: 8500,
     rating: 3.9,
     imageUrl:
-      "https://www.thebluekite.com/_next/image?url=https%3A%2F%2Fwww.thebluekite.com%2Fuploads%2Fproperty%2FH600-395-CONF-40-livingroom5.webp&w=3840&q=75",
+      "https://asset-cdn.stanzaliving.com/stanza-living/image/upload/v1580289702/Website/CMS-Uploads/lqw7pr67bxcjo3ma4htg.jpg",
     type: "Male Only",
     amenities: [
       "Laundry",
@@ -117,10 +116,10 @@ const pgData = [
     id: "7",
     name: "Deluxe Stay",
     location: "Hadapsar, Pune",
-    price: 13000,
-    rating: 4.4,
+    price: 15000,
+    rating: 4.9,
     imageUrl:
-      "https://asset-cdn.stanzaliving.com/stanza-living/image/upload/f_auto,q_70,w_400/e_improve/e_sharpen:10/e_saturation:10/v1580289732/Website/CMS-Uploads/j8hjb1qhzcbnsmnude3m.jpg",
+      "https://metrocityliving.com/wp-content/uploads/2024/11/metrocity-boys-hostel-in-kothrud-vanaj-with-double-sharing-room.jpg",
     type: "Co-living",
     amenities: [
       "Fully Furnished",
@@ -136,7 +135,7 @@ const pgData = [
     price: 11000,
     rating: 4.1,
     imageUrl:
-      "https://asset-cdn.stanzaliving.com/stanza-living/image/upload/f_auto,q_70,w_400/v1580375346/Website/CMS-Uploads/o4bf5h8z6cxtgnb6hvxj.jpg",
+      "https://img.squareyards.com/secondaryPortal/optImages/IN_639028647390992371-0101261145394539.jpg?aio=w-300;h-300;fill;",
     type: "Male Only",
     amenities: ["Wifi", "AC Rooms", "Laundry", "Included Food", "Near IT Park"],
   },
