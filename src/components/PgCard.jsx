@@ -143,7 +143,7 @@ const PgCard = ({
             <span className="text-sm sm:text-sm text-gray-500"> /month</span>
           </div>
 
-          <button className="bg-[#364a82] hover:bg-[#d28c14] text-white py-1 sm:py-1.5 px-3 sm:px-4 rounded text-base sm:text-base transition cursor-pointer flex-shrink-0">
+          <button className="bg-[#364a82] hover:bg-[#16317b] text-white py-1 sm:py-1.5 px-3 sm:px-4 rounded text-base sm:text-base transition cursor-pointer flex-shrink-0">
             View Details
           </button>
         </div>
@@ -153,3 +153,6 @@ const PgCard = ({
 };
 
 export default PgCard;
+
+
+// #d28c14
