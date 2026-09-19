@@ -6,10 +6,10 @@ const HeroSection = ({ onSearch }) => {
 
   //  Run on every change in input
   useEffect(() => {
-    if (inputValue.trim() === "") {
+    if (inputValue.trim() === "" && onSearch) {
       onSearch(""); // reset search if input is empty
     }
-  }, [inputValue]);
+  }, [inputValue, onSearch]);
 
   const handleSearchClick = () => {
     onSearch(inputValue);

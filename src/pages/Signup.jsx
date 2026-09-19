@@ -12,16 +12,26 @@ const Signup = () => {
     city: "",
   });
 
-  const handleSubmit = () => {
-    if (!fullName || !email || !phone || city) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      !formData.fullName.trim() ||
+      !formData.email.trim() ||
+      !formData.phone.trim() ||
+      !formData.city.trim()
+    ) {
       toast.error("Please complete all fields.");
       return;
     }
-    toast.success("User details ssaved successfully.");
+    toast.success("User details saved successfully.");
   };
 
   const handleChange = (e) => {
-    e.preventDefault();
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   return (
@@ -29,13 +39,7 @@ const Signup = () => {
       {/* Details component */}
       <div className="w-full md:w-1/2 flex flex-col items-center justify-center md:px-24 ">
         <div className="space-y-3 text-center mb-4">
-          {/* <h1 className="flex text-center justify-center">
-            <Link />
-          </h1> */}
           <h1 className="text-5xl font-bold font-serif "> Sign up</h1>
-          {/* <span className="text-gray-500 text-lg font-semibold">
-            Welcome to UrbanStayz. Let's create an account.
-          </span> */}
         </div>
 
         {/* Google login button */}
@@ -55,11 +59,13 @@ const Signup = () => {
                 Full Name
               </label>
               <input
+                id="fullName"
+                name="fullName"
                 type="text"
                 value={formData.fullName}
                 onChange={handleChange}
                 placeholder="Enter your full name"
-                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none  "
+                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none"
               />
             </div>
             <div>
@@ -70,11 +76,13 @@ const Signup = () => {
                 Email
               </label>
               <input
+                id="email"
+                name="email"
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter your email"
-                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none  "
+                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none"
               />
             </div>
             <div>
@@ -85,17 +93,20 @@ const Signup = () => {
                 Phone No
               </label>
               <input
+                id="phoneNumber"
+                name="phone"
                 type="tel"
                 maxLength={10}
-                pattern="[0-9]{10}"
                 value={formData.phone}
                 onChange={(e) => {
                   const digitsOnly = e.target.value.replace(/\D/g, "");
-                  setPhone(digitsOnly);
-                  handleChange;
+                  setFormData((prev) => ({
+                    ...prev,
+                    phone: digitsOnly,
+                  }));
                 }}
                 placeholder="Enter your number"
-                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none  "
+                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none"
               />
             </div>
             <div>
@@ -106,16 +117,18 @@ const Signup = () => {
                 City
               </label>
               <input
+                id="city"
+                name="city"
                 type="text"
                 value={formData.city}
                 onChange={handleChange}
                 placeholder="Enter your city"
-                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none "
+                className="w-full md:w-80 rounded-xl px-4 py-2 border border-gray-400 focus:ring-1 focus:outline-none"
               />
             </div>
             <button
               type="submit"
-              className="py-2 mt-6 md:w-80 text-lg font-serif  rounded-full text-white bg-[#d28c14] hover:bg-[#946410] cursor-pointer"
+              className="py-2 mt-6 md:w-80 text-lg font-serif rounded-full text-white bg-[#d28c14] hover:bg-[#946410] cursor-pointer"
             >
               Sign up
             </button>

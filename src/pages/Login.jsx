@@ -33,7 +33,7 @@ const Login = () => {
           duration: 5000,
         });
       }, 3000);
-    } catch (err) {
+    } catch {
       toast.error("Something went wrong while sending OTP");
     } finally {
       setLoading(false);
@@ -53,7 +53,7 @@ const Login = () => {
       } else {
         toast.error("Invalid OTP.");
       }
-    } catch (err) {
+    } catch {
       toast.error("Something went wrong while verifying OTP");
     } finally {
       setLoading(false);

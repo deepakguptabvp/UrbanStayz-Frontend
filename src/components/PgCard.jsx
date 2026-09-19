@@ -1,23 +1,6 @@
 import {
   MapPinIcon,
   StarIcon,
-  WifiIcon,
-  ShowerHeadIcon,
-  BedIcon,
-  SoupIcon,
-  WashingMachineIcon,
-  SnowflakeIcon,
-  DumbbellIcon,
-  PlugIcon,
-  TvIcon,
-  ParkingCircleIcon,
-  ShieldCheckIcon,
-  FanIcon,
-  ThermometerIcon,
-  UtensilsIcon,
-  KeyRoundIcon,
-  LockIcon,
-  Wifi,
   MapPin,
   Building2,
   Navigation,
@@ -117,7 +100,7 @@ const PgCard = ({
 
         {/* Amenities */}
         <div className="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2">
-          {amenities.map((amenity, index) => {
+          {amenities?.map((amenity, index) => {
             const Icon = amenityIcons[amenity];
             return (
               <motion.span
@@ -153,6 +136,3 @@ const PgCard = ({
 };
 
 export default PgCard;
-
-
-// #d28c14
