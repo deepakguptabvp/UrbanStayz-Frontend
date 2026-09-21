@@ -1,47 +1,129 @@
-import howItWorksData from "../data/howitworksData";
+import { Search, CalendarCheck, KeyRound, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router";
+
+const steps = [
+  {
+    number: "01",
+    title: "Discover Your Stay",
+    description:
+      "Explore verified PGs and co-living spaces with smart filters for budget, location, AC, food, and gender preferences.",
+    icon: Search,
+    color: "from-blue-600 to-indigo-600",
+    badge: "Smart Discovery",
+    benefits: ["Zero brokerage", "Verified photos & amenities", "Real map locations"],
+  },
+  {
+    number: "02",
+    title: "Schedule a Free Visit",
+    description:
+      "Book an instant physical site visit or virtual tour at your preferred date & time with direct host coordination.",
+    icon: CalendarCheck,
+    color: "from-amber-500 to-orange-500",
+    badge: "Free & Flexible",
+    benefits: ["No booking charges", "Select custom time slots", "Dedicated visit support"],
+  },
+  {
+    number: "03",
+    title: "Move In Seamlessly",
+    description:
+      "Finalize transparent terms directly with verified owners, pay safe deposits, and unpack into your fully managed room.",
+    icon: KeyRound,
+    color: "from-emerald-500 to-teal-600",
+    badge: "Instant Settle-In",
+    benefits: ["Standard rental agreement", "Transparent deposit terms", "24/7 assistance"],
+  },
+];
 
 const HowItWorks = () => {
+  const navigate = useNavigate();
+
   return (
-    <section className="py-16  bg-gray-100">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900">
-            How UrbanStayz Works
+    <section className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
+      {/* Subtle Background Elements */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none opacity-40">
+        <div className="absolute top-1/4 left-10 w-72 h-72 bg-blue-100 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-10 w-80 h-80 bg-amber-100 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-0">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-50 text-blue-950 text-xs font-bold uppercase tracking-wider border border-blue-100">
+            <ShieldCheck className="w-3.5 h-3.5 text-blue-900" /> Hassle-Free Experience
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
+            How <span className="text-[#132350]">UrbanStayz</span> Works
           </h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-            Finding your perfect stay is easy with our simple three-step
-            journey.
+          <p className="text-base sm:text-lg text-gray-600">
+            Finding your next comfortable, affordable home is as simple as 1, 2, 3.
           </p>
         </div>
 
-        {/* Search - Visit - Connect */}
-        <div className="relative md:mt-20 grid lg:gap-18 grid-cols-1 md:grid-cols-3 items-center justify-center">
-          {/* Connecting Line */}
-          <div className="absolute top-8 left-1/2 -translate-x-1/2 w-2/3 h-[2px] bg-blue-900 hidden md:block" />
+        {/* 3 Step Cards Grid */}
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          {steps.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                className="relative bg-white rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-xl border border-gray-100 hover:border-blue-100 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-2"
+              >
+                {/* Step Top Row */}
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <div
+                      className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.color} text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <Icon className="w-7 h-7" />
+                    </div>
+                    <span className="text-3xl sm:text-4xl font-black text-gray-200 group-hover:text-blue-900/30 transition-colors">
+                      {step.number}
+                    </span>
+                  </div>
 
-          {howItWorksData.map((item) => (
-            <div key={item.step} className="relative text-center space-y-3 mt-2 mb-6">
-              <h3 className="md:-mt-10 text-[16px] font-medium text-gray-900">
-                {item.step}
-              </h3>
+                  {/* Badge & Title */}
+                  <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-blue-900 bg-blue-50 px-2.5 py-0.5 rounded-md mb-2">
+                    {step.badge}
+                  </span>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-6">
+                    {step.description}
+                  </p>
+                </div>
 
-              <div className="mx-auto h-16 w-16 rounded-full bg-indigo-100 flex items-center justify-center hover:scale-125 transition-transform">
-                <img
-                  src={item.icon}
-                  alt={item.title}
-                  className={`${item.iconSize} bg-white`}
-                />
-              </div>
+                {/* Key Checklist Benefits */}
+                <div className="pt-4 border-t border-gray-100 space-y-2">
+                  {step.benefits.map((benefit, i) => (
+                    <div key={i} className="flex items-center gap-2 text-xs text-gray-600 font-medium">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                      <span>{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
 
-              <h3 className="mt-6 text-xl font-medium text-gray-900">
-                {item.title}
-              </h3>
-
-              <p className="mt-2 text-base text-gray-600 max-w-2xs mx-auto">
-                {item.description}
-              </p>
-            </div>
-          ))}
+        {/* Bottom CTA */}
+        <div className="mt-12 text-center">
+          <button
+            onClick={() => {
+              navigate("/alllistings");
+              window.scrollTo(0, 0);
+            }}
+            className="inline-flex items-center gap-2 bg-[#132350] hover:bg-[#202e54] text-white px-8 py-3.5 rounded-xl font-semibold transition hover:shadow-lg cursor-pointer text-sm sm:text-base"
+          >
+            <span>Start Exploring Stays</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </section>

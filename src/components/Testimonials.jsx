@@ -1,120 +1,191 @@
-import { Quote } from "lucide-react";
-import testimonials from "../data/testimonialData";
 import { useState, useEffect } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Quote, Star, ChevronLeft, ChevronRight, CheckCircle2, Heart } from "lucide-react";
+import testimonials from "../data/testimonialData";
+import { motion, AnimatePresence } from "framer-motion";
+
+const enrichedTestimonials = [
+  {
+    ...testimonials[0],
+    city: "Koramangala, Bangalore",
+    stayDuration: "Stayed 8 months",
+    rating: 5,
+  },
+  {
+    ...testimonials[1],
+    city: "North Campus, Delhi",
+    stayDuration: "Stayed 1 year",
+    rating: 5,
+  },
+  {
+    ...testimonials[2],
+    city: "Indiranagar, Bangalore",
+    stayDuration: "Stayed 6 months",
+    rating: 5,
+  },
+  {
+    ...testimonials[3],
+    city: "Viman Nagar, Pune",
+    stayDuration: "Stayed 1.5 years",
+    rating: 5,
+  },
+  {
+    ...testimonials[4],
+    city: "Gachibowli, Hyderabad",
+    stayDuration: "Stayed 10 months",
+    rating: 5,
+  },
+  {
+    ...testimonials[5],
+    city: "Powai, Mumbai",
+    stayDuration: "Stayed 4 months",
+    rating: 5,
+  },
+];
 
 export const Testimonials = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Auto-slide effect
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) =>
-        prev === testimonials.length - 1 ? 0 : prev + 1
-      );
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [currentSlide]);
+    if (!isAutoPlaying) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % enrichedTestimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
 
-  // Manual navigation slide buttons
-  const goToNextSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === testimonials.length - 1 ? 0 : prev + 1
+  const handleNext = () => {
+    setIsAutoPlaying(false);
+    setCurrentIndex((prev) => (prev + 1) % enrichedTestimonials.length);
+  };
+
+  const handlePrev = () => {
+    setIsAutoPlaying(false);
+    setCurrentIndex(
+      (prev) => (prev - 1 + enrichedTestimonials.length) % enrichedTestimonials.length
     );
   };
 
-  const goToPrevSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === 0 ? testimonials.length - 1 : prev - 1
-    );
-  };
+  const current = enrichedTestimonials[currentIndex];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900">
-            Testimonials from Our Esteemed Users
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-50 text-amber-900 text-xs font-bold uppercase tracking-wider border border-amber-200">
+            <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> Real Stories, Real Homes
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
+            Loved by 1,200+ Happy Tenants
           </h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-            Join the multitude who have seamlessly secured premium PG
-            accommodations through our distinguished platform.
+          <p className="text-base sm:text-lg text-gray-600">
+            Hear from students and working professionals who found their dream stay on UrbanStayz.
           </p>
         </div>
-        <div className="mt-12 relative flex items-center justify-center ">
-          <div className="overflow-hidden w-full mx-8 ">
-            <div
-              className="flex transition-transform duration-500 ease-in-out "
-              style={{
-                width: `${testimonials.length * 100}%`,
-                transform: `translateX(-${
-                  currentSlide * (100 / testimonials.length)
-                }%)`,
-              }}
+
+        {/* Featured Testimonial Hero Card */}
+        <div className="mt-12 sm:mt-16 max-w-4xl mx-auto relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id || currentIndex}
+              initial={{ opacity: 0, scale: 0.96, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: -15 }}
+              transition={{ duration: 0.4 }}
+              className="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xl border border-gray-100 relative"
             >
-              {testimonials.map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  className="flex w-full p-4 justify-center"
-                >
-                  <div className="bg-white rounded-lg shadow-md p-4 relative w-full max-w-3xl">
-                    <Quote className="h-8 w-8 text-indigo-200 absolute top-3 left-6 opacity-50" />
-                    <p className="text-gray-600 relative pl-4 italic">
-                      “{testimonial.content}”
+              {/* Top Quote Icon & Stars */}
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-5 h-5 text-amber-400 fill-amber-400"
+                    />
+                  ))}
+                  <span className="ml-2 text-xs font-bold text-gray-700">
+                    5.0 Verified Review
+                  </span>
+                </div>
+
+                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5" /> Verified Resident
+                </span>
+              </div>
+
+              {/* Testimonial Quote */}
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-800 font-medium leading-relaxed italic relative">
+                <Quote className="w-10 h-10 text-blue-100 absolute -top-4 -left-3 -z-10" />
+                “{current.content}”
+              </p>
+
+              {/* Author Info */}
+              <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <img
+                    src={current.avatar}
+                    alt={current.author}
+                    className="w-14 h-14 rounded-full object-cover border-2 border-amber-400 shadow-sm"
+                  />
+                  <div>
+                    <h4 className="text-base font-bold text-gray-900">
+                      {current.author}
+                    </h4>
+                    <p className="text-xs text-gray-500 font-medium">
+                      {current.role} • <span className="text-blue-900 font-semibold">{current.city}</span>
                     </p>
-                    <div className="mt-6 flex items-center justify-center">
-                      <img
-                        src={testimonial.avatar}
-                        alt={testimonial.author}
-                        className="h-10 w-10 rounded-full object-cover"
-                      />
-                      <div className="ml-3">
-                        <h4 className="text-sm font-semibold text-gray-900 underline">
-                          {testimonial.author}
-                        </h4>
-                        <p className="text-sm text-gray-500">
-                          {testimonial.role}
-                        </p>
-                      </div>
-                    </div>
                   </div>
                 </div>
+
+                <div className="text-left sm:text-right text-xs text-gray-400 font-medium">
+                  <span>{current.stayDuration}</span>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Navigation Controls */}
+          <div className="flex items-center justify-between mt-8 max-w-sm mx-auto">
+            <button
+              onClick={handlePrev}
+              className="p-3 rounded-full bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 shadow-sm hover:shadow transition cursor-pointer"
+              aria-label="Previous review"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Indicator Dots */}
+            <div className="flex gap-2">
+              {enrichedTestimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    setIsAutoPlaying(false);
+                    setCurrentIndex(idx);
+                  }}
+                  className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    idx === currentIndex
+                      ? "w-8 bg-[#132350]"
+                      : "w-2.5 bg-gray-300 hover:bg-gray-400"
+                  }`}
+                  aria-label={`Go to review ${idx + 1}`}
+                />
               ))}
             </div>
-          </div>
 
-          {/* Left Navigating */}
-          <button
-            className="absolute left-0 lg:left-10 xl:left-40 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-10 transition-all duration-300 cursor-pointer"
-            onClick={goToPrevSlide}
-            aria-label="Previous slider button"
-          >
-            <FaChevronLeft size={24} />
-          </button>
-
-          {/* Right Navigation */}
-          <button
-            className="absolute right-0 lg:right-10 xl:right-40 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-10 transition-all duration-300 cursor-pointer"
-            onClick={goToNextSlide}
-            aria-label="Next slider button"
-          >
-            <FaChevronRight size={24} />
-          </button>
-        </div>
-
-        {/* Navigating Indicator buttons */}
-        <div className="flex justify-center space-x-2">
-          {testimonials.map((_, index) => (
             <button
-              key={index}
-              className={`w-2 h-2 rounded-full inline-block ${
-                index === currentSlide ? "bg-indigo-500" : "bg-gray-300"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
+              onClick={handleNext}
+              className="p-3 rounded-full bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 shadow-sm hover:shadow transition cursor-pointer"
+              aria-label="Next review"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
   );
 };
+
+export default Testimonials;

@@ -1,16 +1,35 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as propertyApi from "../../services/propertyApi";
 
-// Async thunk to fetch all properties
+// Async thunk to fetch all properties (with optional filter/search query params)
 export const fetchProperties = createAsyncThunk(
   "properties/fetchProperties",
-  async (_, { rejectWithValue }) => {
+  async (params = {}, { rejectWithValue }) => {
     try {
-      const response = await propertyApi.getAllProperties();
+      const response = await propertyApi.getAllProperties(params);
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || error.message || "Failed to fetch properties"
+        error.response?.data?.message ||
+          error.message ||
+          "Failed to fetch properties"
+      );
+    }
+  }
+);
+
+// Async thunk to fetch featured properties
+export const fetchFeaturedProperties = createAsyncThunk(
+  "properties/fetchFeaturedProperties",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await propertyApi.getFeaturedProperties();
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message ||
+          error.message ||
+          "Failed to fetch featured properties"
       );
     }
   }
@@ -25,7 +44,9 @@ export const fetchPropertyById = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || error.message || "Failed to fetch property"
+        error.response?.data?.message ||
+          error.message ||
+          "Failed to fetch property"
       );
     }
   }
@@ -40,7 +61,9 @@ export const addProperty = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || error.message || "Failed to create property"
+        error.response?.data?.message ||
+          error.message ||
+          "Failed to create property"
       );
     }
   }
@@ -55,7 +78,9 @@ export const editProperty = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || error.message || "Failed to update property"
+        error.response?.data?.message ||
+          error.message ||
+          "Failed to update property"
       );
     }
   }
@@ -70,7 +95,9 @@ export const removeProperty = createAsyncThunk(
       return id;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || error.message || "Failed to delete property"
+        error.response?.data?.message ||
+          error.message ||
+          "Failed to delete property"
       );
     }
   }
@@ -78,7 +105,12 @@ export const removeProperty = createAsyncThunk(
 
 const initialState = {
   properties: [],
+  featuredProperties: [],
   selectedProperty: null,
+  similarProperties: [],
+  total: 0,
+  page: 1,
+  totalPages: 1,
   loading: false,
   error: null,
 };
@@ -103,11 +135,31 @@ const propertySlice = createSlice({
       })
       .addCase(fetchProperties.fulfilled, (state, action) => {
         state.loading = false;
-        state.properties = action.payload;
+        // Handle both `{ success: true, data: [...], total, page }` and raw `[...]`
+        if (action.payload && Array.isArray(action.payload.data)) {
+          state.properties = action.payload.data;
+          state.total = action.payload.total || action.payload.data.length;
+          state.page = action.payload.page || 1;
+          state.totalPages = action.payload.totalPages || 1;
+        } else if (Array.isArray(action.payload)) {
+          state.properties = action.payload;
+          state.total = action.payload.length;
+        } else {
+          state.properties = action.payload?.data || [];
+        }
       })
       .addCase(fetchProperties.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+
+      // Fetch Featured
+      .addCase(fetchFeaturedProperties.fulfilled, (state, action) => {
+        if (action.payload && Array.isArray(action.payload.data)) {
+          state.featuredProperties = action.payload.data;
+        } else if (Array.isArray(action.payload)) {
+          state.featuredProperties = action.payload;
+        }
       })
 
       // Fetch by ID
@@ -117,7 +169,8 @@ const propertySlice = createSlice({
       })
       .addCase(fetchPropertyById.fulfilled, (state, action) => {
         state.loading = false;
-        state.selectedProperty = action.payload;
+        state.selectedProperty = action.payload?.data || action.payload;
+        state.similarProperties = action.payload?.similar || [];
       })
       .addCase(fetchPropertyById.rejected, (state, action) => {
         state.loading = false;
@@ -131,7 +184,10 @@ const propertySlice = createSlice({
       })
       .addCase(addProperty.fulfilled, (state, action) => {
         state.loading = false;
-        state.properties.push(action.payload);
+        const newProp = action.payload?.data || action.payload;
+        if (newProp) {
+          state.properties.unshift(newProp);
+        }
       })
       .addCase(addProperty.rejected, (state, action) => {
         state.loading = false;
@@ -145,18 +201,21 @@ const propertySlice = createSlice({
       })
       .addCase(editProperty.fulfilled, (state, action) => {
         state.loading = false;
-        const index = state.properties.findIndex(
-          (p) => (p._id || p.id) === (action.payload._id || action.payload.id)
-        );
-        if (index !== -1) {
-          state.properties[index] = action.payload;
-        }
-        if (
-          state.selectedProperty &&
-          (state.selectedProperty._id || state.selectedProperty.id) ===
-            (action.payload._id || action.payload.id)
-        ) {
-          state.selectedProperty = action.payload;
+        const updated = action.payload?.data || action.payload;
+        if (updated) {
+          const index = state.properties.findIndex(
+            (p) => (p._id || p.id) === (updated._id || updated.id)
+          );
+          if (index !== -1) {
+            state.properties[index] = updated;
+          }
+          if (
+            state.selectedProperty &&
+            (state.selectedProperty._id || state.selectedProperty.id) ===
+              (updated._id || updated.id)
+          ) {
+            state.selectedProperty = updated;
+          }
         }
       })
       .addCase(editProperty.rejected, (state, action) => {
@@ -182,5 +241,6 @@ const propertySlice = createSlice({
   },
 });
 
-export const { setSelectedProperty, clearPropertyError } = propertySlice.actions;
+export const { setSelectedProperty, clearPropertyError } =
+  propertySlice.actions;
 export default propertySlice.reducer;

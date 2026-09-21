@@ -7,23 +7,23 @@ import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import AllListings from "./pages/AllListings";
+import PropertyDetails from "./pages/PropertyDetails";
 import Signup from "./pages/Signup";
 
 function App() {
-  // const [user, setUser] = useState(null);
-
   return (
     <>
       <Router>
         <Routes>
           <Route path="/" element={<MainLayout />}>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/signup" element={<Signup />}></Route>
-            <Route path="/about" element={<About />}></Route>
-            <Route path="/contact" element={<Contact />}></Route>
-            <Route path="/alllistings" element={<AllListings />}></Route>
-            <Route path="*" element={<NotFound />}></Route>
+            <Route index element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/alllistings" element={<AllListings />} />
+            <Route path="/property/:id" element={<PropertyDetails />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </Router>
