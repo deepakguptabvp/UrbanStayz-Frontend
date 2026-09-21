@@ -1,7 +1,11 @@
 import axios from "axios";
 
+// Read API URL from environment variable on Vercel or fallback to localhost
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },

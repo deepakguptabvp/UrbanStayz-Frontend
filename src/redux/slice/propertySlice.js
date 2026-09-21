@@ -1,5 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as propertyApi from "../../services/propertyApi";
+import pgData from "../../data/pgData";
+
+// Normalize fallback data to ensure _id and id are present
+const defaultProperties = pgData.map((item) => ({
+  ...item,
+  _id: item.id,
+  isVerified: true,
+  isAvailable: true,
+}));
 
 // Async thunk to fetch all properties (with optional filter/search query params)
 export const fetchProperties = createAsyncThunk(
@@ -9,11 +18,44 @@ export const fetchProperties = createAsyncThunk(
       const response = await propertyApi.getAllProperties(params);
       return response.data;
     } catch (error) {
-      return rejectWithValue(
-        error.response?.data?.message ||
-          error.message ||
-          "Failed to fetch properties"
-      );
+      // Return filtered local fallback data if backend is offline/unreachable on Vercel
+      let fallbackList = [...defaultProperties];
+      if (params.search || params.city) {
+        const query = (params.search || params.city).toLowerCase().trim();
+        fallbackList = fallbackList.filter(
+          (p) =>
+            (p.location || "").toLowerCase().includes(query) ||
+            (p.name || "").toLowerCase().includes(query)
+        );
+      }
+      if (params.type && params.type !== "All") {
+        fallbackList = fallbackList.filter(
+          (p) => (p.type || "").toLowerCase() === params.type.toLowerCase()
+        );
+      }
+      if (params.maxPrice && params.maxPrice < 40000) {
+        fallbackList = fallbackList.filter((p) => p.price <= params.maxPrice);
+      }
+      if (params.amenities) {
+        const reqAmenities = params.amenities.split(",");
+        fallbackList = fallbackList.filter((p) =>
+          reqAmenities.every((a) => (p.amenities || []).includes(a))
+        );
+      }
+      if (params.sort === "price_low_high") {
+        fallbackList.sort((a, b) => a.price - b.price);
+      } else if (params.sort === "price_high_low") {
+        fallbackList.sort((a, b) => b.price - a.price);
+      } else if (params.sort === "rating") {
+        fallbackList.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+      }
+
+      return {
+        success: true,
+        isFallback: true,
+        data: fallbackList,
+        total: fallbackList.length,
+      };
     }
   }
 );
@@ -26,11 +68,11 @@ export const fetchFeaturedProperties = createAsyncThunk(
       const response = await propertyApi.getFeaturedProperties();
       return response.data;
     } catch (error) {
-      return rejectWithValue(
-        error.response?.data?.message ||
-          error.message ||
-          "Failed to fetch featured properties"
-      );
+      return {
+        success: true,
+        isFallback: true,
+        data: defaultProperties.slice(0, 9),
+      };
     }
   }
 );
@@ -43,11 +85,21 @@ export const fetchPropertyById = createAsyncThunk(
       const response = await propertyApi.getPropertyById(id);
       return response.data;
     } catch (error) {
-      return rejectWithValue(
-        error.response?.data?.message ||
-          error.message ||
-          "Failed to fetch property"
+      const found = defaultProperties.find(
+        (p) => (p._id || p.id).toString() === id.toString()
       );
+      if (found) {
+        return {
+          success: true,
+          data: found,
+          similar: defaultProperties.filter(
+            (p) =>
+              (p._id || p.id).toString() !== id.toString() &&
+              p.location?.includes(found.location?.split(",")[1]?.trim() || "")
+          ).slice(0, 3),
+        };
+      }
+      return rejectWithValue("Property not found");
     }
   }
 );
@@ -104,11 +156,11 @@ export const removeProperty = createAsyncThunk(
 );
 
 const initialState = {
-  properties: [],
-  featuredProperties: [],
+  properties: defaultProperties,
+  featuredProperties: defaultProperties.slice(0, 9),
   selectedProperty: null,
   similarProperties: [],
-  total: 0,
+  total: defaultProperties.length,
   page: 1,
   totalPages: 1,
   loading: false,
@@ -135,7 +187,6 @@ const propertySlice = createSlice({
       })
       .addCase(fetchProperties.fulfilled, (state, action) => {
         state.loading = false;
-        // Handle both `{ success: true, data: [...], total, page }` and raw `[...]`
         if (action.payload && Array.isArray(action.payload.data)) {
           state.properties = action.payload.data;
           state.total = action.payload.total || action.payload.data.length;
@@ -145,12 +196,15 @@ const propertySlice = createSlice({
           state.properties = action.payload;
           state.total = action.payload.length;
         } else {
-          state.properties = action.payload?.data || [];
+          state.properties = action.payload?.data || defaultProperties;
         }
       })
       .addCase(fetchProperties.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+        if (state.properties.length === 0) {
+          state.properties = defaultProperties;
+        }
       })
 
       // Fetch Featured
