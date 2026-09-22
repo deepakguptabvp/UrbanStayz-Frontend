@@ -6,7 +6,7 @@ const FeaturedListing = ({ listings = [], loading = false }) => {
   const featuredListings = listings.slice(0, 9);
 
   return (
-    <section className="py-8 sm:py-12 lg:py-16 bg-gray-50">
+    <section id="featured-listings" className="py-8 sm:py-12 lg:py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         <div className="text-center">
           <span className="text-xs uppercase tracking-wider font-bold text-blue-900 bg-blue-50 px-3 py-1 rounded-full">

@@ -9,7 +9,7 @@ const cities = [
     count: "6+ Stays",
     startingPrice: "₹8,900",
     image:
-      "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=600&q=75",
+      "https://makeithappen.co.in/wp-content/uploads/2026/06/historical-places-in-banglore.jpg",
     areas: "Koramangala, HSR, Whitefield, Indiranagar",
   },
   {
@@ -45,7 +45,7 @@ const cities = [
     count: "1+ Stays",
     startingPrice: "₹11,000",
     image:
-      "https://images.unsplash.com/photo-1605007493699-ce65834f8a00?auto=format&fit=crop&w=600&q=75",
+      "https://upload.wikimedia.org/wikipedia/commons/1/12/Charminar_of_Hyderabad_Telangana.jpg",
     areas: "Gachibowli, Hitec City, Madhapur",
   },
   {
@@ -54,7 +54,7 @@ const cities = [
     count: "1+ Stays",
     startingPrice: "₹9,000",
     image:
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=75",
+      "https://pub-8b549a102c1947ddb8ca422febdbc1dd.r2.dev/metro_or_night_view.webp",
     areas: "Sector 62, Sector 18, Electronic City",
   },
 ];
@@ -71,29 +71,16 @@ const CityExplore = () => {
     <section className="py-16 sm:py-20 lg:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-12">
-          <div>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-900 text-xs font-bold uppercase tracking-wider">
-              <Building className="w-3.5 h-3.5" /> Prime Locations
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">
-              Explore Stays in Top Cities
-            </h2>
-            <p className="mt-1 text-sm sm:text-base text-gray-600">
-              Find PGs and co-living apartments near IT parks, universities, and metro stations.
-            </p>
-          </div>
-
-          <button
-            onClick={() => {
-              navigate("/alllistings");
-              window.scrollTo(0, 0);
-            }}
-            className="inline-flex items-center gap-2 text-sm font-bold text-blue-900 hover:text-blue-950 transition cursor-pointer"
-          >
-            <span>View All Cities</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-900 text-xs font-bold uppercase tracking-wider">
+            <Building className="w-3.5 h-3.5" /> Prime Locations
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2">
+            Explore Stays in Top Cities
+          </h2>
+          <p className="mt-2 text-sm sm:text-base text-gray-600">
+            Find PGs and co-living apartments near IT parks, universities, and metro stations.
+          </p>
         </div>
 
         {/* City Cards Grid */}
@@ -148,6 +135,20 @@ const CityExplore = () => {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* View All Button */}
+        <div className="mt-10 sm:mt-12 flex justify-center text-center">
+          <button
+            onClick={() => {
+              navigate("/alllistings");
+              window.scrollTo(0, 0);
+            }}
+            className="inline-flex items-center gap-2 bg-[#132350] hover:bg-[#202e54] text-white py-3.5 px-8 text-base font-semibold rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+          >
+            <span>View All Cities</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </section>

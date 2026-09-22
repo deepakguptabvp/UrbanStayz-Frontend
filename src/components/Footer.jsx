@@ -167,37 +167,37 @@ const Footer = () => {
               <li>
                 <Link to="/alllistings?city=Bangalore" className="text-gray-400 hover:text-white transition flex items-center justify-between">
                   <span>Bangalore PGs</span>
-                  <span className="text-[11px] text-gray-500">6 Stays</span>
+                  
                 </Link>
               </li>
               <li>
                 <Link to="/alllistings?city=Pune" className="text-gray-400 hover:text-white transition flex items-center justify-between">
                   <span>Pune Co-Living</span>
-                  <span className="text-[11px] text-gray-500">3 Stays</span>
+                 
                 </Link>
               </li>
               <li>
                 <Link to="/alllistings?city=Delhi" className="text-gray-400 hover:text-white transition flex items-center justify-between">
                   <span>Delhi Student PGs</span>
-                  <span className="text-[11px] text-gray-500">3 Stays</span>
+                 
                 </Link>
               </li>
               <li>
                 <Link to="/alllistings?city=Hyderabad" className="text-gray-400 hover:text-white transition flex items-center justify-between">
                   <span>Hyderabad Stays</span>
-                  <span className="text-[11px] text-gray-500">1 Stay</span>
+                 
                 </Link>
               </li>
               <li>
                 <Link to="/alllistings?city=Mumbai" className="text-gray-400 hover:text-white transition flex items-center justify-between">
                   <span>Mumbai Youth Stays</span>
-                  <span className="text-[11px] text-gray-500">1 Stay</span>
+                 
                 </Link>
               </li>
               <li>
                 <Link to="/alllistings?city=Noida" className="text-gray-400 hover:text-white transition flex items-center justify-between">
                   <span>Noida Techie PGs</span>
-                  <span className="text-[11px] text-gray-500">1 Stay</span>
+                 
                 </Link>
               </li>
             </ul>

@@ -16,6 +16,10 @@ const HeroSection = ({ onSearch }) => {
   const handleSearchClick = () => {
     if (onSearch) {
       onSearch(inputValue);
+      const resultsSection = document.getElementById("featured-listings");
+      if (resultsSection) {
+        resultsSection.scrollIntoView({ behavior: "smooth" });
+      }
     } else if (inputValue.trim()) {
       navigate(`/alllistings?search=${encodeURIComponent(inputValue.trim())}`);
     }

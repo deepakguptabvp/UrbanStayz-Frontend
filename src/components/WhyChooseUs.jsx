@@ -70,14 +70,16 @@ const WhyChooseUs = () => {
                 className="bg-gray-50 rounded-2xl p-6 hover:bg-white hover:shadow-xl border border-gray-100 hover:border-gray-200 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  <div
-                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} text-white flex items-center justify-center shadow-md mb-5 group-hover:scale-110 transition-transform`}
-                  >
-                    <Icon className="w-6 h-6" />
+                  <div className="flex items-center gap-3.5 mb-4">
+                    <div
+                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} text-white flex items-center justify-center shadow-md flex-shrink-0 group-hover:scale-110 transition-transform`}
+                    >
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-gray-900 leading-snug">
+                      {feature.title}
+                    </h3>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">
-                    {feature.title}
-                  </h3>
                   <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                     {feature.description}
                   </p>
