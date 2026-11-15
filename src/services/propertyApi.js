@@ -57,4 +57,11 @@ export const createBooking = (data) => API.post("/bookings", data);
 
 export const getMyBookings = () => API.get("/bookings/my");
 
+// ================= CHATBOT APIS =================
+export const sendChatMessage = (message, history = []) =>
+  API.post("/chatbot/message", { message, history });
+
+export const getChatbotSuggestions = () =>
+  API.get("/chatbot/suggestions");
+
 export default API;

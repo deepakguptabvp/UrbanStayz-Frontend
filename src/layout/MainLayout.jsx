@@ -1,6 +1,7 @@
 import { Outlet } from "react-router";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import ChatWidget from "../components/ChatWidget";
 import { Toaster } from "react-hot-toast";
 
 const MainLayout = () => {
@@ -13,7 +14,7 @@ const MainLayout = () => {
       </aside> */}
 
       {/* Main Content */}
-      <div className="w-full flex flex-col">
+      <div className="w-full flex flex-col relative">
         <Header />
         {/* Child routes will be rendered here */}
         <main className="flex-1">
@@ -21,6 +22,8 @@ const MainLayout = () => {
           <Outlet />
         </main>
         <Footer />
+        {/* Floating AI Chat Assistant */}
+        <ChatWidget />
       </div>
     </div>
   );
